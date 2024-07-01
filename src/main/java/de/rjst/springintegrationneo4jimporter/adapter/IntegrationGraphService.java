@@ -3,7 +3,7 @@ package de.rjst.springintegrationneo4jimporter.adapter;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "integration-graph-service", url = "https://rjst-integration.vpn.rjst.de/actuator/integrationgraph", configuration = FeignConfig.class)
+@FeignClient(name = "integration-graph-service", url = "http://localhost:8080/actuator/integrationgraph", configuration = FeignConfig.class)
 public interface IntegrationGraphService {
 
     @GetMapping
