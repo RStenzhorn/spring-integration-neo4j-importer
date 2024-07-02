@@ -42,4 +42,10 @@ public class IntegrationObject {
     @Relationship(type = "OUTPUT")
     private Set<IntegrationObject> outputObjects= new HashSet<>();
 
+    @Relationship(type = "ROUTE")
+    private Set<IntegrationObject> routeObjects= new HashSet<>();
+
+    @Relationship(type = "DISCARD")
+    private Set<IntegrationObject> discardObjects= new HashSet<>();
+
 }

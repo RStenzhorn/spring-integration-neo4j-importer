@@ -39,7 +39,13 @@ public class Importer implements CommandLineRunner {
         for (final LinksItem links : integrationGraph.getLinks()) {
             final IntegrationObject source = nodeMap.get(links.getFrom());
             final IntegrationObject target = nodeMap.get(links.getTo());
-            source.getOutputObjects().add(target);
+            switch (links.getType()) {
+                case "input" -> source.getInputObjects().add(target);
+                case "output" -> source.getOutputObjects().add(target);
+                case "route" -> source.getRouteObjects().add(target);
+                case "discard" -> source.getRouteObjects().add(target);
+                default -> log.error("Unknown link type: {}", links.getType());
+            }
             log.info("Link: {} -> {}", source.getNodeId(), target.getNodeId());
         }
 
